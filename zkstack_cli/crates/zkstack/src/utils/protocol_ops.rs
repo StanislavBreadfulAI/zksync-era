@@ -201,8 +201,12 @@ impl ProtocolOpsRunner {
 }
 
 /// Top-level JSON structure from protocol_ops `--out` file.
+/// Uses the standard CommandEnvelope format: { version, command, input, output, runs }.
 #[derive(Debug, Deserialize)]
 struct ProtocolOpsJsonOutput {
+    #[serde(default)]
+    #[allow(dead_code)]
+    pub version: Option<u32>,
     pub output: ProtocolOpsEcosystemOutput,
 }
 
@@ -254,8 +258,12 @@ pub struct CtmOutput {
 }
 
 /// Top-level JSON structure from protocol_ops chain init `--out` file.
+/// Uses the standard CommandEnvelope format: { version, command, input, output, runs }.
 #[derive(Debug, Deserialize)]
 struct ProtocolOpsChainJsonOutput {
+    #[serde(default)]
+    #[allow(dead_code)]
+    pub version: Option<u32>,
     pub output: ProtocolOpsChainOutput,
 }
 
